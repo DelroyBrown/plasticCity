@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Wishlist</h1>
+    <div class="products">
+        {% for product in products %}
+            <div class="product">
+                <h2><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h2>
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <p>{{ product.price }}</p>
+                <a href="{% url 'store:wishlist_remove' product.category.slug product.slug %}">Remove from wishlist</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

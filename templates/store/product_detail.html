@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/product_detail.css' %}">
+<div class="container">
+    <div class="image-container">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+    </div>
+    <div class="details-container">
+        <div class="product-detail">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p>Price: {{ product.price }}</p>
+            <p>Category: {{ product.category.name }}</p>
+            <p>Stock: {{ product.stock }}</p>
+        </div>
+        <form method="post" action="{% url 'store:cart_add' category_slug=product.category.slug product_slug=product.slug %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="quantity">Quantity:</label>
+              <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control" style="width: 100px;">
+            </div>
+            <button type="submit" class="btn btn-primary">Add to cart</button>
+        </form>
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'store:wishlist_add' product.category.slug product.slug %}">
+                {% csrf_token %}
+                <button type="submit">Add to wishlist</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

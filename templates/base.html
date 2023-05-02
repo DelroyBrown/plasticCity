@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Ecommerce Store{% endblock %}</title>
+    <!-- Add any CSS and JS files here -->
+</head>
+<body>
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+       <!-- {% include "includes/navbar.html" %} -->
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

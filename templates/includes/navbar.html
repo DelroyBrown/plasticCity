@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+<nav class="navbar">
+    <ul class="nav-links left">
+        <li><a href="{% url 'store:home' %}">Home</a></li>
+        <li><a href="{% url 'store:products' %}">Products</a></li>
+        <li><a href="{% url 'store:cart_detail' %}">Cart</a></li>
+    </ul>
+    <div class="logo-container">
+        <a href="{% url 'store:home' %}"><img src="your_logo.png" alt="Logo" class="logo"></a>
+    </div>
+    <ul class="nav-links right">
+        <li><a href="{% url 'store:wishlist_detail' %}">Wishlist</a></li>
+        <li><a href="{% url 'store:login' %}">Login</a></li>
+        <li><a href="{% url 'store:register' %}">Register</a></li>
+    </ul>
+</nav>

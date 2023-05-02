@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <h3>Categories</h3>
+        <ul>
+            <li><a href="{% url 'store:products' %}">All</a></li>
+            {% for c in categories %}
+            <li>
+                <a href="{% url 'store:products_list_by_category' c.slug %}">{{ c.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <h3>Products</h3>
+        <div class="row">
+            {% for product in products %} {% if product in low_stock_products %}
+            <p>Low in stock</p>
+            {% endif %}
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+                    <div class="caption">
+                        <a href="{% url 'store:product_detail' category_slug=product.category.slug product_slug=product.slug %}">
+                            {{ product.name }}
+                        </a>
+                        <p>{{ product.description }}</p>
+                        <p>
+                            <a href="#" class="btn btn-primary" role="button">Price: {{ product.price }}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-md-12">
+                <p>No products found in this category.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

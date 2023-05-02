@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Checkout</h1>
+    <h2>Shipping information</h2>
+    <form method="post" action="{% url 'orders:checkout' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Continue to payment</button>
+    </form>
+
+    <h2>Cart summary</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart.items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.unit_price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.total }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="cart-total">
+        <strong>Subtotal:</strong> {{ cart.total }}
+    </div>
+    <div class="total-price">
+        <strong>Total:</strong> {{ total_price }}
+    </div>
+{% endblock %}
