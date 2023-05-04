@@ -1,17 +1,35 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}" type="text/css">
 <nav class="navbar">
-    <ul class="nav-links left">
-        <li><a href="{% url 'store:home' %}">Home</a></li>
-        <li><a href="{% url 'store:products' %}">Products</a></li>
-        <li><a href="{% url 'store:cart_detail' %}">Cart</a></li>
-    </ul>
-    <div class="logo-container">
-        <a href="{% url 'store:home' %}"><img src="your_logo.png" alt="Logo" class="logo"></a>
+    <div class="navbar-content">
+        <div class="navbar-left">
+            <a href="/">
+                <img src="{% static 'images/home-icon.png' %}" alt="Home" class="navbar-icon">
+            </a>
+        </div>
+        <div class="navbar-right">
+            <a href="{% url 'store:wishlist_detail' %}">
+                <img src="{% static 'images/love.png' %}" alt="Wishlist" class="navbar-icon">
+            </a>
+            <a href="{% url 'store:cart_detail' %}">
+                <img src="{% static 'images/shopping-bag.png' %}" alt="Cart" class="navbar-icon">
+            </a>
+        </div>
+        <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-    <ul class="nav-links right">
-        <li><a href="{% url 'store:wishlist_detail' %}">Wishlist</a></li>
-        <li><a href="{% url 'store:login' %}">Login</a></li>
-        <li><a href="{% url 'store:register' %}">Register</a></li>
-    </ul>
+    <div class="navbar-dropdown" id="navbarDropdown">
+        <a href="/">Home</a>
+        <a href="{% url 'store:wishlist_detail' %}">Wishlist</a>
+        <a href="{% url 'store:cart_detail' %}">Cart</a>
+    </div>
 </nav>
+
+<script>
+    document.querySelector('.navbar-burger').addEventListener('click', function () {
+        document.querySelector('.navbar-dropdown').classList.toggle('show');
+    });
+</script>

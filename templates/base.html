@@ -6,11 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Ecommerce Store{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="{% static 'javascript/hero.js' %}"></script>
+    <script src="{% static 'javascript/cube.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
     <!-- Add any CSS and JS files here -->
 </head>
 
 <body>
+    {% include 'includes/navbar.html' %}
     <div class="container">
         <div class="message-popup">
             {% for message in messages %}
@@ -29,21 +38,21 @@
                     messagePopup.style.display = 'flex';
                 }
             }
-        
+
             function closeMessagePopup() {
                 const messagePopup = document.querySelector('.message-popup');
                 if (messagePopup) {
                     messagePopup.style.display = 'none';
                 }
             }
-        
+
             // Check if there are messages and show the message popup
             const messages = document.querySelectorAll('.alert');
             if (messages.length > 0) {
                 showMessagePopup();
             }
         </script>
-        
+
 
     </div>
 </body>

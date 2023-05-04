@@ -6,7 +6,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="{% static 'javascript/hero.js' %}"></script>
-<script src="{% static 'javascript/cube.js' %}"></script>
 
 
 <style>
@@ -47,6 +46,7 @@
         background-image: url('{% static "images/other-image.jpg" %}');
     }
 </style>
+{% include "base.html" %}
 <!-- Hero -->
 <section class="et-hero-tabs">
     <h1>PLASTIC CITY</h1>
@@ -80,68 +80,5 @@
         </div>
     </section>
     {% endfor %}
-
-    <!-- <section class="et-slide" id="tab-flexbox">
-        <div class="img-container">
-            <img src="{% static 'images/butterfly.jpg' %}" alt="Butterfly">
-        </div>
-        <div class="text-container">
-            <small>Material: PLA | Print Time: 5hrs | Infill: 10%<br>Printer: Creality Ender 3 v2</small>
-            <h1>Butterfly</h1>
-            <p>Behold the brilliance of our breathtaking 3D printed butterfly,<br>
-                beautifully balanced between bold hues and bespoke artistry,<br>
-                blending technology and craftsmanship to<br>beguile your senses.</p>
-            <h3>
-                <a href="">PURCHASE</a>
-            </h3>
-        </div>
-
-    </section>
-    <section class="et-slide" id="tab-react">
-        <div class="img-container">
-            <img src="{% static 'images/elephant.jpg' %}" alt="Elephant">
-        </div>
-        <div class="text-container">
-            <small>Material: PLA | Print Time: 7hrs | Infill: 25%<br>Printer: Creality Ender 3 v2</small>
-            <h1>Elephant</h1>
-            <p>Embrace the elegance of our expertly engineered<br>
-                3D printed elephant, exuding an exquisite essence<br>
-                that enchants every environment it inhabits.</p>
-            <h3>
-                <a href="">PURCHASE</a>
-            </h3>
-        </div>
-    </section>
-    <section class="et-slide" id="tab-angular">
-        <div class="img-container">
-            <img src="{% static 'images/dog.jpg' %}" alt="Dog">
-        </div>
-        <div class="text-container">
-            <small>Material: PLA | Print Time: 6hrs | Infill: 33%<br>Printer: Creality Ender 3 v2</small>
-            <h1>Dog</h1>
-            <p>Delight in our distinguished 3D-printed dog,<br>
-                diligently designed with dazzling detail, delivering a<br>
-                delightful decoration for discerning dog devotees.</p>
-            <h3>
-                <a href="">PURCHASE</a>
-            </h3>
-        </div>
-    </section>
-    <section class="et-slide" id="tab-other">
-        <div class="img-container">
-            <img src="{% static 'images/house.jpg' %}" alt="House">
-        </div>
-        <div class="text-container">
-            <small>Material: PLA | Print Time: 65hrs | Infill: 15%<br>Printer: Creality Ender 3 v2</small>
-            <h1>House</h1>
-            <p>Harness the harmonious haven of our high-quality<br>
-                3D printed houses, handcrafted with heartfelt precision<br>
-                to provide a hospitable and heavenly habitat.</p>
-            <h3>
-                <a href="">PURCHASE</a>
-            </h3>
-        </div>
-    </section> -->
-
 
 </main>
