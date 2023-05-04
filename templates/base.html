@@ -1,21 +1,51 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Ecommerce Store{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
     <!-- Add any CSS and JS files here -->
 </head>
+
 <body>
     <div class="container">
-        {% for message in messages %}
+        <div class="message-popup">
+            {% for message in messages %}
             <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
                 {{ message }}
             </div>
-        {% endfor %}
-       <!-- {% include "includes/navbar.html" %} -->
+            {% endfor %}
+            <button class="close-button" onclick="closeMessagePopup()">×</button>
+        </div>
         {% block content %}
         {% endblock %}
+        <script>
+            function showMessagePopup() {
+                const messagePopup = document.querySelector('.message-popup');
+                if (messagePopup) {
+                    messagePopup.style.display = 'flex';
+                }
+            }
+        
+            function closeMessagePopup() {
+                const messagePopup = document.querySelector('.message-popup');
+                if (messagePopup) {
+                    messagePopup.style.display = 'none';
+                }
+            }
+        
+            // Check if there are messages and show the message popup
+            const messages = document.querySelectorAll('.alert');
+            if (messages.length > 0) {
+                showMessagePopup();
+            }
+        </script>
+        
+
     </div>
 </body>
+
 </html>

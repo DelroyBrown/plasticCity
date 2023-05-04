@@ -17,9 +17,152 @@ body {
 
 .details-container {
     flex: 1;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
+}
+
+.product-detail {
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-detail h2 {
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 1rem;
+    color: #333;
 }
 
 .img-fluid {
     width: 100%;
     height: auto;
+}
+
+.product-description {
+    width: 50%;
+}
+
+.details-container form {
+    padding-top: 25px;
+}
+
+.form-group {
+    text-align: center;
+}
+
+.quantity-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    font-size: 24px;
+    line-height: 1;
+    text-align: center;
+}
+
+.quantity-field {
+    width: 70px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    padding: 0;
+    margin: 0 5px;
+}
+
+.addtocart-btn {
+    background: transparent;
+    border: none;
+    border-radius: 0px;
+    width: 300px;
+    height: 50px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.wishlist-btn {
+    margin: 0 !important;
+}
+
+.tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    left: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.tooltip-wrapper:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.quantity-field::-webkit-inner-spin-button,
+.quantity-field::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-field {
+    -moz-appearance: textfield;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .product-description {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image-container {
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+
+    .details-container {
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .product-description {
+        width: 100%;
+    }
 }
