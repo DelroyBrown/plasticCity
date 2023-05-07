@@ -1,31 +1,32 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-    <h2>Cart</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th></th>  {# Add an empty header for the Remove button column #}
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in cart %}
-                <tr>
-                    <td>{{ item.product.name }}</td>
-                    <td>{{ item.price }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>{{ item.total_price }}</td>
-                    <td>
-                        <a href="{% url 'store:cart_remove' id=item.product.id %}" class="btn btn-danger">Remove</a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <p class="text-right">Total: {{ cart.get_total_price }}</p>
-    <a href="{% url 'orders:checkout' %}">Proceed to checkout</a>
-{% endblock %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}" type="text/css">
+
+<div class="cart-container">
+    {% for item in cart %}
+    {% with product=item.product %}
+    <div class="product-info-wrapper">
+        <div class="image-wrapper">
+            <img class="cart-image" src="{{ product.image.url }}" alt="{{ product.name }}">
+        </div>
+        <div class="product-details">
+            <h3>{{ product.name }}</h3>
+            <p>Price: {{ product.price }}</p>
+            <p>Material: {{ product.material }}</p>
+            <p>Infill: {{ product.infill }}%</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Subtotal: {{ item.total_price|floatformat:2 }}</p>
+            <a href="{% url 'store:cart_remove' id=item.product.id %}" class="btn btn-danger">Remove</a>
+        </div>
+    </div>
+    {% endwith %}
+    {% endfor %}
+</div>
+<div class="bottom-container">
+    <h1>Total: {{cart.get_total_price}}</h1>
+    <a href="{% url 'orders:checkout' %}" class="btn-checkout">CHECKOUT</a>
+</div>
+
+{% endblock content %}

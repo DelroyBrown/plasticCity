@@ -68,7 +68,9 @@ def product_detail(request, category_slug, product_slug):
 
 def cart_detail(request):
     cart = Cart(request)
-    return render(request, 'store/cart_detail.html', {'cart': cart})
+    cart_subtotal = {item['product']: cart.get_subtotal(item['product']) for item in cart}
+    return render(request, 'store/cart_detail.html', {'cart': cart, 'cart_subtotal': cart_subtotal})
+
 
 
 @require_POST

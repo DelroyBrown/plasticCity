@@ -41,5 +41,8 @@ class Cart:
             item['total_price'] = item['price'] * item['quantity']
             yield item
 
+    def get_subtotal(self, product):
+        return product.price * self.cart[str(product.id)]['quantity']
+
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
